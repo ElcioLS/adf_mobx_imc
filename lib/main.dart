@@ -1,4 +1,4 @@
-import 'package:adf_mobx_imc/observables/modelo_observado/modelo_observado_page.dart';
+import 'package:adf_mobx_imc/observables/future/future_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,7 +17,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       // home: ImcPage(),
       // home: const ObservableListPage(),
-      home: const ModeloObservadoPage(),
+      // home: const ModeloObservadoPage(),
+      home: const FuturePage(),
     );
   }
 }
