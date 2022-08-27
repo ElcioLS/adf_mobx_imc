@@ -1,4 +1,4 @@
-import 'package:adf_mobx_imc/imc/imc_page.dart';
+import 'package:adf_mobx_imc/observables/list/observable_list_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,10 +10,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Academia do Flutter',
+
       theme: ThemeData(
         primarySwatch: Colors.indigo,
       ),
-      home: ImcPage(),
+      debugShowCheckedModeBanner: false,
+      // home: ImcPage(),
+      home: const ObservableListPage(),
     );
   }
 }
