@@ -1,36 +1,45 @@
-import 'package:adf_mobx_imc/observables/list/observable_list_controller.dart';
+import 'package:adf_mobx_imc/observables/modelo_observado/modelo_observado_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-class ObservableListPage extends StatefulWidget {
-  const ObservableListPage({Key? key}) : super(key: key);
+class ModeloObservadoPage extends StatefulWidget {
+  const ModeloObservadoPage({Key? key}) : super(key: key);
 
   @override
-  State<ObservableListPage> createState() => _ObservableListPageState();
+  State<ModeloObservadoPage> createState() => _ModeloObservadoPageState();
 }
 
-class _ObservableListPageState extends State<ObservableListPage> {
-  final controller = ObservableListController();
+class _ModeloObservadoPageState extends State<ModeloObservadoPage> {
+  final controller = ModeloObservadoController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: const Text('ObservableList'),
+          title: const Text('ModeloObservadoPage'),
         ),
         body: Column(
           children: [
             Expanded(
               child: Observer(
                 builder: (_) {
+                  print('Lista assa sdfdfgd');
                   return ListView.builder(
                     itemCount: controller.products.length,
                     itemBuilder: (context, index) {
-                      final productName = controller.products[index].name;
-                      return CheckboxListTile(
-                        value: false,
-                        onChanged: (_) {},
-                        title: Text(productName),
+                      final productStore = controller.products[index];
+                      return Observer(
+                        builder: (_) {
+                          print(
+                              'Item carregado foi ${productStore.product.name}');
+                          return CheckboxListTile(
+                            value: productStore.selected,
+                            onChanged: (_) {
+                              controller.selectedProduct(index);
+                            },
+                            title: Text(productStore.product.name),
+                          );
+                        },
                       );
                     },
                   );
